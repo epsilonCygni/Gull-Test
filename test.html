@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+    <head>
+
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="gray.png">
+
+        <title>Gullfoss App</title>
+    
+        <link rel="stylesheet" type="text/css" href="style.css">
+    
+    </head>
+
+
+    <body>
+
+        <script>
+
+            var sandwiches = ['Bagels', 'Ham & Cheese Baguette (dark)', 'Ham & Cheese Baguette', 'Tomato & Mozzarella Panini', 'Chicken Panini', 'Chicken Baguette', 'Salami Baguette', 'Salami Baguette (dark)', 'Flagets'];
+
+            var packedSandwiches = ['Roast Beef', 'Tuna', 'Vegetarian', 'Ham & Cheese Toast'];
+
+            var cakes = ['caramel', 'black forest', 'cheese', 'dark', 'cream & caramel', 'raspberry', 'brownies', 'coconut', '..cream', 'apple pie', 'peacan pie', 'caramel apple pie'];
+        
+        </script>
+
+
+
+
+
+
+
+
+
+        <script>
+            // sandwiches
+            document.write("<table> <tr> <th>SANDWICHES</th><th>~</th> </tr>");
+            for (var i = 0; i < sandwiches.length; i++) {
+                document.write("<tr> <td>" + sandwiches[i] + "</td><td id='cellSandwiches" + i + "'><input id='inputSandwiches" + i + "' placeholder='" + i + "'></td> </tr>");
+            }
+            document.write("</table>");
+
+
+            // packed sandwiches
+            document.write("<table> <tr> <th>PACKED SANDWICHES</th><th>*</th> </tr>")
+            for (var i = 0; i < packedSandwiches.length; i++) {
+                document.write("<tr> <td>" + packedSandwiches[i] + "</td><td id='cellPacked" + i + "'><input id='inputPacked" + i + "' placeholder='" + i + "'></td> </tr>");
+            }
+            document.write("</table>");
+
+
+            // salads
+            document.write("<table> <tr> <td>Salads</td><td id='cellSalads'><input id='inputSalads'></td> </tr> </table>");
+
+            // cakes
+            document.write("<table> <tr> <th>CAKES</th><th>*</th> </tr>")
+            for (var i = 0; i < cakes.length; i++) {
+                document.write("<tr> <td>" + cakes[i] + "</td><td id='cellCakes" + i + "'><input id='inputCakes" + i + "' placeholder='" + i + "'></td> </tr>");
+            }
+            document.write("</table>");
+
+
+        </script>
+
+
+
+        <br>
+
+
+
+        <input id="numb">
+
+        <button type="button" onclick="myFunction()">Submit</button>
+
+        <p id="demo"></p>
+
+
+
+        <script>
+
+            var tomatoes = 0;
+
+            function myFunction() {
+
+                var x, text;
+                
+                x = document.getElementById("numb").value;
+
+
+                // Get the value of the input field with id="inputSandwiches..." and set it to the cell with the id="cellSandwiches..."
+                var valueSandwiches;
+
+                
+                for (var i = 0; i < sandwiches.length; i++) {
+                    valueSandwiches = document.getElementById("inputSandwiches" + i).value;
+                    document.getElementById("cellSandwiches" + i).innerHTML = valueSandwiches;
+
+                    if (sandwiches[i] === 'Bagels') {
+                        tomatoes += (3 * 12 * valueSandwiches);
+                    }
+
+                }
+
+
+                // If x is Not a Number or less than one or greater than 10
+                if (isNaN(x) || x < 1 || x > 10) {
+                    text = "Input not valid";
+                } else {
+                    text = "Input OK";
+                }
+
+                document.getElementById("demo").innerHTML = text;
+
+                // set the last value of tomatoes variable in the cell with the id="test"
+                document.getElementById("test").innerHTML = tomatoes;                
+
+
+            }
+        </script>
+        
+        <table>
+            <tr> 
+                <td>tomatoes</td>
+                <td id="test"></td>
+            </tr>
+        </table>
+
+    </body>
+</html> 
